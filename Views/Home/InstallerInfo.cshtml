@@ -1,0 +1,55 @@
+﻿@model Car_Agency.Models.InstallerInfo
+
+@{
+    ViewBag.Title = "InstallerInfo";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h2>بيانات المشترى</h2>
+    </div>
+
+    <div class="panel-body">
+        @using (Html.BeginForm("InstallerInfo", "Home"))
+        {
+
+            <div class="form-group">
+                <label> الرقم القومي</label>
+                @Html.TextBoxFor(c => c.ID, new { @class = "form-control" })
+            </div>
+
+                <div class="form-group">
+                    <label> الاسم</label>
+                    @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label> الدوله</label>
+                    @Html.TextBoxFor(c => c.Country, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label> المدينه</label>
+                    @Html.TextBoxFor(c => c.City, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label> العنوان بالتفصيل</label>
+                    @Html.TextBoxFor(c => c.Address, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label> رقم الهاتف</label>
+                    @Html.TextBoxFor(c => c.Phone, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label> البريد الالكتروني</label>
+                    @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+                </div>
+
+
+                <input type="submit" value="تسجيل التقسيط" />
+        }
+
+    </div>
+</div>

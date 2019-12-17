@@ -1,0 +1,37 @@
+﻿@model  IEnumerable<Car_Agency.Models.Car>
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h1 class="text-center" style="color:white"> عرض جميع السيارات</h1>
+<style>
+    
+    .panel{background:#00ffff;padding:20px; border-radius:30px; height:320px; width:900px;  }
+    .image{float:left;}
+    .info {
+        float: right;width:550px;padding-top:5px; 
+    }
+    span{display:block;padding-bottom:8px;}
+   
+    
+</style>
+@foreach (var c in Model)
+{
+    <div class="panel text-center">
+        <div>
+            <p style="font-size:30px ;color:crimson;">الماركه :@c.Type  </p>
+        </div>
+       
+       <div class="info">
+     
+         <span style="font-size:25px;padding-left:190px;color:brown;width:300px" class="btn btn-primary btn-success">       الموديل:  @c.Model</span>
+         <span style="font-size:25px ; padding-left:150px;color:brown;width:300px" class="btn btn-default btn-warning">   السعر :  @c.Price ج.م </span>
+         <span style="font-size:25px ;padding-left:170px; color:brown">الوصف للسياركه :</span><span style="font-size:18px ;color:white;">@c.Description</span>
+       </div>
+        <div class="image"> 
+            <img src="~/Uploads/@c.Image" height="200px" width="300px" class="img-circle" /> 
+        </div> 
+           
+    </div>
+}

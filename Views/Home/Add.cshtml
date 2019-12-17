@@ -1,0 +1,63 @@
+﻿@model Car_Agency.Models.Car
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h2>أضافة سياره جديده</h2>
+    </div>
+
+    <div class="panel-body">
+        @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+            <div class="form-group">
+                <label> نوع السياره</label>
+            <select class="choose form-control" name="Type" >
+                <option>أختر الماركه</option>
+                <option>Borch</option>
+                <option>Lada</option>
+                <option>BMW</option>
+                <option>Chevorle</option>
+                <option>Jeep</option>
+                <option>Honda</option>
+                <option>Hyundai</option>
+                <option>Peugeot</option>
+                <option>Toyota</option>
+                <option>KIA</option>
+            </select>
+            </div>
+            <div  class="form-group">
+                <select class="selected form-control" name="Model">
+                    <option>أختر الموديل</option>
+                </select>
+            </div>
+            
+
+            @*<div class="form-group">
+                <label> نوع السياره</label>
+                @Html.TextBoxFor(c=>c.Type,new { @class="form-control"})
+            </div>
+            <div class="form-group">
+                <label> الموديل</label>    
+                @Html.TextBoxFor(c => c.Model, new { @class = "form-control" })
+            </div>*@
+            <div class="form-group">
+                <label> السعر</label>
+                @Html.TextBoxFor(c => c.Price, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label> صورة السياره</label>
+                <input type="file" name="upload" class = "form-control" />
+               
+            </div>
+            <div class="form-group">
+                <label> وصف السياره</label>
+                @Html.TextAreaFor(c => c.Description, new { @class = "form-control" })
+            </div>
+            <input type="submit" value="أضف بيانات السياره"  />
+        }
+       
+    </div>
+</div>

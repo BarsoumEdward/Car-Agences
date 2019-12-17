@@ -1,0 +1,71 @@
+﻿
+@model Car_Agency.Models.Car
+@{
+    ViewBag.Title = "Search";
+}
+
+<style>
+   label{float:right;}
+   select{display:inline-block;width:400px;height:40px;}
+</style>
+<h2 style="color:white">أبحث عن السياره المراد شرائها</h2>
+
+@using (Html.BeginForm("Search", "Home",FormMethod.Post,new { id="my-form"}))
+{
+    <div>
+        <select class="choose" name="Type">
+            <option>أختر الماركه</option>
+            <option>Borch</option>
+            <option>Lada</option>
+            <option>BMW</option>
+            <option>Chevorle</option>
+            <option>Jeep</option>
+            <option>Honda</option>
+            <option>Hyundai</option>
+            <option>Peugeot</option>
+            <option>Toyota</option>
+            <option>KIA</option>
+
+        </select>
+
+
+        <select class="selected" name="Model">
+            <option>أختر الموديل</option>
+        </select>
+
+    </div>
+       
+       
+    
+   <div style="margin-top:20px;">
+       <span style="font-size:18px;color:white">أقصي سعر للسياره </span>
+       <input type="number" name="Price" style="width:400px;height:40px; " />
+   </div>
+    
+    <input type= "submit" value ="بحث" class="btn btn-default btn-success" style="margin-top:20px;"/>
+
+}
+<div id="result">
+
+</div>
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+    
+
+<script>
+    $(function () {
+        $("#my-form").on("submit", function (e) {
+            e.preventDefault();
+           
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (data) {
+                    $("#result").html(data);
+                }
+            });
+        })
+    })
+</script>

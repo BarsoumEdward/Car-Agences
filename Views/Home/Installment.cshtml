@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Installment";
+}
+
+<style>
+ h2,p{color:white}
+ span{color:white;font-size:18px;}
+    select { width:150px; border-radius:10px;}
+    .padding {padding-right:20px;}
+    #p,#installp,#cash,#evrymonth{color:yellowgreen}
+</style>
+
+
+<h2>البيع بالتقسيط</h2>
+<p style="float:right ;font-size:16px">نظام التقسيط :</p><br>
+<p style="font-size:16px">يتم التقسيط بسعر يزيد عن السعر الاصلى للسياره ب 20%  يتم دفع المقدم كاش وهو بنسبة 30% من سعر السياره ثم يتم تقسيط الباقى على 12 شهر   </p>
+
+ <div style="padding-bottom:20px;padding-top:30px; border:1px solid white; border-radius:5px;">
+        <span>أختر الماركه</span>
+        <select class="choose" name="Type">
+            <option>Borch</option>
+            <option>Lada</option>
+            <option>BMW</option>
+            <option>Chevorle</option>
+            <option>Jeep</option>
+            <option>Honda</option>
+            <option>Hyundai</option>
+            <option>Peugeot</option>
+            <option>Toyota</option>
+            <option>KIA</option>
+
+        </select>
+
+        <span>أختر الموديل</span>
+        <select class="selected" id="selected" name="Model">
+        </select>
+        <br />
+        <br />
+        <span>السعر الاصلي   :</span>
+        <span id="p">
+        </span>
+
+        <span class="padding"> السعر بالتقسيط  :   </span>
+        <span id="installp">
+        </span>
+        <br>
+        <br />
+        <span >المقدم :   </span>
+        <span id="cash">
+        </span>
+
+        <span class="padding">  المبلغ الذى سيتم تسديده شهريا ولمدة  سنه  : </span>
+        <span id="evrymonth">
+        </span>
+
+
+    </div>
+    <br><br />
+
+
+   
+
+@Html.ActionLink("أشترى بالتقسيط", "InstallerInfo", "Home", new { @class = "btn btn-default btn-success" })
+
+
+
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    
+    
+    $(function () {
+        $("#selected").on("click", function (e) {
+
+            var model = $("#selected").val();
+            
+            $.ajax({
+                url: "/Home/InstallmentCall",
+                type: "POST",
+                contentType:"application/json",
+                data: "{model:" + JSON.stringify(model) + "}",
+                success: function (data) {
+                    
+                    var price = data;
+                    $("#p").empty().append(price  + " جنيه  ");
+
+                    
+                    var installPrice = price + price * (20 / 100);
+                    $("#installp").empty().append(installPrice + "  جنيه ");
+
+                    var cash = installPrice * (30 / 100);
+                    $("#cash").empty().append(cash + "  جنيه ");
+
+                    var evryMonth = (installPrice - cash) / 12;
+                    $("#evrymonth").empty().append(evryMonth + "   جنيه شهريا");
+                    
+                }
+            });
+            
+        })
+
+        
+    })
+</script>
+

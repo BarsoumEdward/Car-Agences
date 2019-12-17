@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-1.10.2.js"></script>
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/carjquery.js"></script>
+
+    
+</head>
+<body>
+   <style>
+
+        body{
+    direction:rtl;background:#3d5b51;
+   
+            }
+     .navbar{background:#6cd542;height:70px;position:fixed;width:100%;top:0; }
+     .navbar span{display:inline-block; padding:20px; font-size:20px; }
+     
+     
+     .down{margin-top:100px;}
+     
+     
+     .container{width:1000px; border-radius:30px; padding:30px;}
+     
+     .right img{position:fixed;top:80px;right:10px;height:20px;}
+     .left img{position:fixed;top:80px;left:10px;height:20px;}
+
+    </style>
+
+
+
+    <div class="navbar text-center">
+       <span> @Html.ActionLink(" الرئيسيه", "Index", "Home", new { @class = "glyphicon glyphicon-home" }) </span> 
+       <span> @Html.ActionLink(" عرض جميع السيارات", "Show", "Home", new { @class ="glyphicon glyphicon-star"}) </span> 
+       <span>@Html.ActionLink(" بحث", "Search", "Home", new { @class ="glyphicon glyphicon-search" })</span>
+       <span>@Html.ActionLink(" تقسيط", "Installment", "Home", new { @class = "glyphicon glyphicon-book" })</span>
+        <span>@Html.ActionLink(" أتصل بنا", "ContactUs", "Home", new { @class = "glyphicon glyphicon-phone" })</span>
+
+     </div>
+   <div class="down">
+       <div class="right">
+
+           <img src="~/Images/jeep1.jpg" />
+       </div>
+       <div class="container text-center">
+           @RenderBody()
+       </div>
+       <div class="left">
+           <img src="~/Images/jeep2.jpg" />
+       </div>
+   </div>
+    
+    <div class="footer">
+
+    </div>
+   
+</body>
+</html>

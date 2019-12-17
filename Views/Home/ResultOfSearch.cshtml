@@ -1,0 +1,70 @@
+﻿
+@model Car_Agency.Models.Car
+
+@{
+    ViewBag.Title = "ResultOfSearch";
+}
+
+<h2 class="text-center" style="color:white">نتيجة البحث</h2>
+
+@*<h2>
+        @Model.Type
+    </h2>
+    <h2>
+        @Model.Model
+    </h2>
+    <h2>
+        @Model.Price
+    </h2>
+    <img src="~/Uploads/@Model.Image" width="300px" height="200px" />*@
+
+<style>
+    .panel {
+        background: #00ffff;
+        padding: 20px;
+        border-radius: 30px;
+        height: 320px;
+        width: 900px;
+    }
+
+    .image {
+        float: left;
+    }
+
+    .info {
+        float: right;
+        width: 550px;
+        padding-top: 5px;
+    }
+
+    span {
+        display: block;
+        padding-bottom: 8px;
+    }
+</style>
+
+ @if (Model != null)
+ {
+    <div class="panel text-center">
+        <div>
+            <p style="font-size:30px ;color:crimson;">الماركه :@Model.Type  </p>
+        </div>
+
+        <div class="info">
+
+            <span style="font-size:25px;padding-left:190px;color:brown;width:300px" class="btn btn-primary btn-success">       الموديل:  @Model.Model</span>
+            <span style="font-size:25px ; padding-left:150px;color:brown;width:300px" class="btn btn-default btn-warning">   السعر :  @Model.Price ج.م </span>
+            <span style="font-size:25px ;padding-left:170px; color:brown">الوصف للسياركه :</span><span style="font-size:18px ;color:white;">@Model.Description</span>
+        </div>
+        <div class="image">
+            <img src="~/Uploads/@Model.Image" height="200px" width="300px" class="img-circle" />
+        </div>
+
+    </div>
+
+
+ }
+ else {
+    @:<h3 style="color:white">"لا توجد هذه السياره لدينا الان فى معرضنا ولكن ان كنت جاد بالفعل فى شرائها يمكنك الدخول على لنك أتصل بنا لابلاغنا بالتليفون ونحن سنتفق معك على شرائها"</h3>
+
+ }

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .r, .i, .l {
+      float:right;padding:10px;
+    }
+    .i{width:850px;}
+    .r,.l{width:40px;height:40px; margin-top:200px;background:#3d5b51;color:white;}
+</style>
+
+
+<h2 style="color:white">معرض سيارات الشرق الاوسط</h2>
+<button class="r" id="next"><</button>
+<div id="pic" class="i">
+    <img src="~/Images/1.jpg" width="820px"  />
+</div>
+<button class="l" id="previous">></button>
+
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+ <script>
+     $(document).ready(function(){
+     
+     
+         var counter = 1;
+         $("next").click(function()
+         {
+        
+             counter++;
+
+             $("pic").empty().end()
+                 .prepend("<img src='~/Images/" + counter + ".jpg' alt='barsoum' width='820px'/>");
+         });
+         $("previous").click(function () {
+
+             counter--;
+             $("pic").empty().end()
+                .prepend("<img src='~/Images/" + counter + ".jpg' alt='barsoum' width='820px'/>");
+         });
+     
+     
+     })
+     
+ </script>

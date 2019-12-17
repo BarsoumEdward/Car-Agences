@@ -1,0 +1,38 @@
+﻿@model Car_Agency.Models.InstallerInfo
+
+@{
+    ViewBag.Title = "SendWithEmail";
+}
+
+
+
+@{
+    try
+    {
+        WebMail.SmtpServer = "smtp.gmail.com";
+        WebMail.SmtpPort = 587;
+        WebMail.EnableSsl = true;
+        WebMail.UserName = "barsoumedward1@gmail.com";
+        WebMail.Password = "1101995b";
+        WebMail.From = "barsoumedward1@gmail.com";
+        WebMail.SmtpUseDefaultCredentials = true;
+        WebMail.Send("barsoumedward1@gmail.com", "طلب سياره تقسيط",
+           "الاسم :"+ Model.Name+" / العنوان  :" +Model.Country+"  - "+Model.City+" - "+ Model.Address+ " / رقم التليفون :"+Model.Phone
+           +"." );
+    }
+    catch (Exception ex)
+    {
+
+        @:<b>Sorry We Can't Send the Email To Confirm Your RSVP</b>
+            @ex.StackTrace;
+    }
+}
+<div class="text-center">
+
+    <h1 style="color:white">شكرا لك,@Model.Name !</h1>
+    <div class="lead">
+        
+            <b style="color:white">تم تنفيذ طلبك بنجاح نتمنى اتصل معنا على موقعنا لمتابعة طلبك </b>
+        
+    </div>
+</div>
